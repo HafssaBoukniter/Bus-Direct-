@@ -1,0 +1,20 @@
+#plan-sieges {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 12px;
+}
+
+.siege {
+    min-height: 42px;
+    border-radius: 8px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+}
+
+.libre {
+    background-color: #0d9488;
+}
+
+.occupe {
+    background-color: #f43f5e;
+}
