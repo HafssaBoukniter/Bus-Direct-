@@ -58,3 +58,74 @@ function modifSuppPassSelect() {
         }
     });
 }
+
+//place dispo
+function placeDispo(){
+    const siegesLibres = document.querySelectorAll(".siege.libre");
+    places.textContent = siegesLibres.length;
+}
+
+
+//total
+function totalP(){
+    const siegesOccupes = document.querySelectorAll(".siege.occupe");
+    totale.textContent = siegesOccupes.length * 80;
+}
+
+
+//form reserve
+formRes.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const nom = passagerReserve.value.trim();
+    if (nom === "") {
+        parReserver.textContent = "Veuillez saisir le nom du passager.";
+        return;
+    }
+
+    const nomExist = document.querySelectorAll("#plan-sieges .passager");
+    for (const passager of nomExist) {
+        if (passager.textContent.trim().toLowerCase() === nom.toLowerCase()) {
+            parReserver.textContent = "Ce passager possède déjà une réservation.";
+            return;
+        }
+    }
+
+    const siegesLibres = document.querySelectorAll("#plan-sieges .siege.libre");
+    if (siegesLibres.length === 0) {
+        messageReservation.textContent = "Le bus est complet.";
+        return;
+    }
+
+    const numSiege = selectReservation.value;
+    let siege;
+
+    if (numSiege !== "") {
+        siege = Array.from(siegesLibres).find(s => s.dataset.seat === numSiege);
+    } else {
+        siege = siegesLibres[0];
+    }
+
+    if (!siege) {
+        parReserver.textContent = "Veuillez choisir un siège libre.";
+        return;
+    }
+
+    const numS = siege.dataset.seat;
+    siege.classList.remove("libre");
+    siege.classList.add("occupe");
+
+    siege.innerHTML = `
+        <span class="numero-siege">${numS}</span>
+        <span class="passager">${nom}</span>
+    `;
+
+    placeDispo();
+    totalP();
+    reservationSelect();
+    modifSuppPassSelect();
+
+    parReserver.textContent = "Réservation effectuée avec succès !";
+});
+
+reservationSelect()
+modifSuppPassSelect();
