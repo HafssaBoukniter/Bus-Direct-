@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="output.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css" integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <script src="scripte.js"></script>
+    <script src="scripte.js" defer></script>
 </head>
 <body class="bg-slate-50 text-slate-800">
     <!--header-->
@@ -52,7 +52,7 @@
             <div class="border-l border-teal-200 pl-5">
                 <p class="text-sm text-slate-600">Recette totale</p>
                 <p class="text-3xl font-bold text-slate-800 mt-1">
-                    <span id="recette-totale">0</span>
+                    <span id="totale">0</span>
                     <span class="text-lg">DH</span>
                 </p>
             </div>
@@ -78,35 +78,35 @@
 
                     <div class="bus w-full max-w-2sm rounded-[45px] border-2 border-slate-300 bg-slate-100 p-4 sm:p-6">
 
-                        <div id="plan-sieges" class="p-2">
+                        <div id="plan-sieges" class="grid grid-cols-5 grid-cols[1fr_1fr_1rem_1fr_1fr] max-sm:grid-cols-2 max-sm:grid-cols[1fr_1fr] gap-4 p-2">
 
                             <button type="button" data-seat="1" class="siege libre">1</button>
                             <button type="button" data-seat="2" class="siege libre">2</button>
-                            <div></div>
+                            <div class="max-sm:hidden"></div>
                             <button type="button" data-seat="3" class="siege libre">3</button>
                             <button type="button" data-seat="4" class="siege libre">4</button>
 
                             <button type="button" data-seat="5" class="siege libre">5</button>
                             <button type="button" data-seat="6" class="siege libre">6</button>
-                            <div></div>
+                            <div class="max-sm:hidden"></div>
                             <button type="button" data-seat="7" class="siege libre">7</button>
                             <button type="button" data-seat="8" class="siege libre">8</button>
 
                             <button type="button" data-seat="9" class="siege libre">9</button>
                             <button type="button" data-seat="10" class="siege libre">10</button>
-                            <div></div>
+                            <div class="max-sm:hidden"></div>
                             <button type="button" data-seat="11" class="siege libre">11</button>
                             <button type="button" data-seat="12" class="siege libre">12</button>
                             
                             <button type="button" data-seat="13" class="siege libre">13</button>
                             <button type="button" data-seat="14" class="siege libre">14</button>
-                            <div></div>
+                            <div class="max-sm:hidden"></div>
                             <button type="button" data-seat="15" class="siege libre">15</button>
                             <button type="button" data-seat="16" class="siege libre">16</button>
                             
                             <button type="button" data-seat="17" class="siege libre">17</button>
                             <button type="button" data-seat="18" class="siege libre">18</button>
-                            <div></div>
+                            <div class="max-sm:hidden"></div>
                             <button type="button" data-seat="19" class="siege libre">19</button>
                             <button type="button" data-seat="20" class="siege libre">20</button>
 

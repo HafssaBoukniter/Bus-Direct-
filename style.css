@@ -1,16 +1,9 @@
-#plan-sieges {
-    display: grid;
-    grid-template-columns: 1fr 1fr 20px 1fr 1fr;
-    grid-template-rows: repeat(5,120px);
-    gap: 12px;
-}
-
 .siege {
-    min-height: 42px;
     border-radius: 8px;
     font-weight: 600;
     color: white;
     cursor: pointer;
+    height: 3rem;
 }
 
 .libre {
