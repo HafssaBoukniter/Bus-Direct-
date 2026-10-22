@@ -209,5 +209,35 @@ formModif.addEventListener("submit", e => {
     }, 3000);
 });
 
+formSupp.addEventListener("submit", e =>{
+    e.preventDefault();
+
+    const passExist = passagerSupp.value;
+    if(passExist === ""){
+        parSupp.textContent = "Veuillez saisir le nom du passager !";
+        setTimeout(() => {
+            parSupp.textContent = "";
+        }, 3000);
+    }
+
+    const siegeExist = Array.from(sieges).find(siege =>
+        siege.dataset.seat === passExist && siege.classList.contains("occupe")
+    );
+
+    siegeExist.classList.remove("occupe");
+    siegeExist.classList.add("libre");
+    siegeExist.textContent = passExist;
+
+    reservationSelect();
+    modifSuppPassSelect();
+    placeDispo();
+    totalP();
+    formSupp.reset();
+    parSupp.textContent = "Suppression effectuée avec succès !";
+    setTimeout(() => {
+        parSupp.textContent = "";
+    }, 3000);
+});
+
 reservationSelect()
 modifSuppPassSelect();
