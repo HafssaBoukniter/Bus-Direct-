@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="output.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css" integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <script src="scripte.js" defer></script>
 </head>
 <body class="bg-slate-50 text-slate-800">
     <!--header-->
@@ -80,35 +79,35 @@
 
                         <div id="plan-sieges" class="grid grid-cols-5 grid-cols[1fr_1fr_1rem_1fr_1fr] max-sm:grid-cols-2 max-sm:grid-cols[1fr_1fr] gap-4 p-2">
 
-                            <button type="button" data-seat="1" class="siege libre">1</button>
-                            <button type="button" data-seat="2" class="siege libre">2</button>
+                            <button type="button" data-seat="1" class="siege libre flex flex-col justify-center">1</button>
+                            <button type="button" data-seat="2" class="siege libre flex flex-col justify-center">2</button>
                             <div class="max-sm:hidden"></div>
-                            <button type="button" data-seat="3" class="siege libre">3</button>
-                            <button type="button" data-seat="4" class="siege libre">4</button>
+                            <button type="button" data-seat="3" class="siege libre flex flex-col justify-center">3</button>
+                            <button type="button" data-seat="4" class="siege libre flex flex-col justify-center">4</button>
 
-                            <button type="button" data-seat="5" class="siege libre">5</button>
-                            <button type="button" data-seat="6" class="siege libre">6</button>
+                            <button type="button" data-seat="5" class="siege libre flex flex-col justify-center">5</button>
+                            <button type="button" data-seat="6" class="siege libre flex flex-col justify-center">6</button>
                             <div class="max-sm:hidden"></div>
-                            <button type="button" data-seat="7" class="siege libre">7</button>
-                            <button type="button" data-seat="8" class="siege libre">8</button>
+                            <button type="button" data-seat="7" class="siege libre flex flex-col justify-center">7</button>
+                            <button type="button" data-seat="8" class="siege libre flex flex-col justify-center">8</button>
 
-                            <button type="button" data-seat="9" class="siege libre">9</button>
-                            <button type="button" data-seat="10" class="siege libre">10</button>
+                            <button type="button" data-seat="9" class="siege libre flex flex-col justify-center">9</button>
+                            <button type="button" data-seat="10" class="siege libre flex flex-col justify-center">10</button>
                             <div class="max-sm:hidden"></div>
-                            <button type="button" data-seat="11" class="siege libre">11</button>
-                            <button type="button" data-seat="12" class="siege libre">12</button>
+                            <button type="button" data-seat="11" class="siege libre flex flex-col justify-center">11</button>
+                            <button type="button" data-seat="12" class="siege libre flex flex-col justify-center">12</button>
                             
-                            <button type="button" data-seat="13" class="siege libre">13</button>
-                            <button type="button" data-seat="14" class="siege libre">14</button>
+                            <button type="button" data-seat="13" class="siege libre flex flex-col justify-center">13</button>
+                            <button type="button" data-seat="14" class="siege libre flex flex-col justify-center">14</button>
                             <div class="max-sm:hidden"></div>
-                            <button type="button" data-seat="15" class="siege libre">15</button>
-                            <button type="button" data-seat="16" class="siege libre">16</button>
+                            <button type="button" data-seat="15" class="siege libre flex flex-col justify-center">15</button>
+                            <button type="button" data-seat="16" class="siege libre flex flex-col justify-center">16</button>
                             
-                            <button type="button" data-seat="17" class="siege libre">17</button>
-                            <button type="button" data-seat="18" class="siege libre">18</button>
+                            <button type="button" data-seat="17" class="siege libre flex flex-col justify-center">17</button>
+                            <button type="button" data-seat="18" class="siege libre flex flex-col justify-center">18</button>
                             <div class="max-sm:hidden"></div>
-                            <button type="button" data-seat="19" class="siege libre">19</button>
-                            <button type="button" data-seat="20" class="siege libre">20</button>
+                            <button type="button" data-seat="19" class="siege libre flex flex-col justify-center">19</button>
+                            <button type="button" data-seat="20" class="siege libre flex flex-col justify-center">20</button>
 
                         </div>
                     </div>
@@ -126,12 +125,11 @@
                     <form id="form-reservation">
                         <div class="mb-3">
                             <label for="nom-reservation" class="block text-sm font-medium mb-2">Nom du passager <span class="text-rose-500">*</span></label>
-                            <input type="text" id="nom-reservation" name="nom" placeholder="Ex : Hafssa" required class="w-full border border-slate-300 rounded-lg  px-3 py-2.5 outline-none  focus:border-teal-500">
+                            <input type="text" id="nom-reservation" name="nom" placeholder="Ex : Hafssa"  class="w-full border border-slate-300 rounded-lg  px-3 py-2.5 outline-none  focus:border-teal-500">
                         </div>
                         <div class="mb-4">
                             <label for="siege-reservation" class="block text-sm font-medium mb-2">Choisir un siège (optionnel)</label>
                             <select id="siege-reservation" name="siege" class="w-full border border-slate-300 rounded-lg px-3 py-2.5 bg-white outline-none focus:border-teal-500">
-                                <option value="">Sélectionner un siège</option>
                             </select>
                         </div>
                         <button type="submit" class="w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-lg py-3">Réserver</button>
@@ -152,7 +150,6 @@
                             </label>
 
                             <select id="passager-modification" name="passager" required class="w-full border border-slate-300 rounded-lg px-3 py-2.5 bg-white outline-none focus:border-blue-500">
-                                <option value="">Choisir un passager</option>
                             </select>
                         </div>
 
@@ -164,7 +161,6 @@
                         <div class="mb-4">
                             <label for="nouveau-siege" class="block text-sm font-medium mb-2">Nouveau siège</label>
                             <select id="nouveau-siege" name="nouveauSiege" class="w-full border border-slate-300 rounded-lg px-3 py-2.5 bg-white outline-none focus:border-blue-500">
-                                <option value="">Conserver le siège actuel</option>
                             </select>
                         </div>
 
@@ -182,7 +178,6 @@
                         <div class="mb-4">
                             <label for="passager-suppression" class="block text-sm font-medium mb-2">Sélectionner un passager<span class="text-rose-500">*</span></label>
                             <select id="passager-suppression" name="passager" required class="w-full border border-slate-300 rounded-lg px-3 py-2.5 bg-white outline-none focus:border-rose-500">
-                                <option value="">Choisir un passager</option>
                             </select>
                         </div>
 
@@ -203,5 +198,7 @@
             &copy; 2026 BusDirect — Tous droits réservés.
         </div>
     </footer>
+
+    <script src="scripte.js" defer></script>
 </body>
 </html>
