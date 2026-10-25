@@ -73,6 +73,32 @@ function totalP() {
 }
 
 
+function chargerReservations() {
+    const reservations = JSON.parse(localStorage.getItem("reservations")) || [];
+
+    reservations.forEach(reservation => {
+        const siege = Array.from(sieges).find(
+            s => s.dataset.seat === reservation.siege
+        );
+
+        if (siege) {
+            siege.classList.remove("libre");
+            siege.classList.add("occupe");
+
+            siege.innerHTML = `
+                <span class="numero-siege">${reservation.siege}</span>
+                <span class="passager">${reservation.nom}</span>
+            `;
+        }
+    });
+
+    placeDispo();
+    totalP();
+    reservationSelect();
+    modifSuppPassSelect();
+}
+
+
 //form reserve
 formRes.addEventListener("submit", e => {
     e.preventDefault();
@@ -119,6 +145,17 @@ formRes.addEventListener("submit", e => {
         <span class="numero-siege">${numS}</span>
         <span class="passager">${nom}</span>
     `;
+
+    let reservations = JSON.parse(localStorage.getItem("reservations")) || [];
+
+    const reservation = {
+        nom: nom,
+        siege: numS
+    };
+
+    reservations.push(reservation);
+
+    localStorage.setItem("reservations", JSON.stringify(reservations));
 
     placeDispo();
     totalP();
@@ -198,6 +235,20 @@ formModif.addEventListener("submit", e => {
         }
     }
 
+    let reservations = JSON.parse(localStorage.getItem("reservations")) || [];
+
+    reservations = reservations.map(reservation => {
+        if (reservation.siege === passExist) {
+            return {
+                nom: nouvPass || reservation.nom,
+                siege: nouvSiege || reservation.siege
+            };
+        }
+        return reservation;
+    });
+
+    localStorage.setItem("reservations", JSON.stringify(reservations));
+
     reservationSelect();
     modifSuppPassSelect();
     placeDispo();
@@ -228,6 +279,14 @@ formSupp.addEventListener("submit", e =>{
     siegeExist.classList.add("libre");
     siegeExist.textContent = passExist;
 
+    let reservations = JSON.parse(localStorage.getItem("reservations")) || [];
+
+    reservations = reservations.filter(
+        reservation => reservation.siege !== passExist
+    );
+
+    localStorage.setItem("reservations", JSON.stringify(reservations));
+
     reservationSelect();
     modifSuppPassSelect();
     placeDispo();
@@ -239,5 +298,6 @@ formSupp.addEventListener("submit", e =>{
     }, 3000);
 });
 
-reservationSelect()
+chargerReservations();
+reservationSelect();
 modifSuppPassSelect();
