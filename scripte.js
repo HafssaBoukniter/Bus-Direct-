@@ -18,6 +18,11 @@ const formSupp = document.getElementById("form-suppression");
 const passagerSupp = document.querySelector("#passager-suppression");
 const parSupp = document.querySelector("#message-suppression");
 
+const formRech = document.getElementById("form-recherche");
+const passagerRechercher = document.querySelector("rechercher-nom");
+const parRech = document.querySelector("#message-rechercher");
+
+
 //select form reservation
 function reservationSelect() {
     selectReservation.innerHTML = '<option value="">Sélectionner un siège</option>';
@@ -78,7 +83,7 @@ function chargerReservations() {
 
     reservations.forEach(reservation => {
         const siege = Array.from(sieges).find(
-            s => s.dataset.seat === reservation.siege
+            s => s.dataset.seat === String(reservation.siege)
         );
 
         if (siege) {
@@ -87,7 +92,7 @@ function chargerReservations() {
 
             siege.innerHTML = `
                 <span class="numero-siege">${reservation.siege}</span>
-                <span class="passager">${reservation.nom}</span>
+                <span class="passager" draggable="true" >${reservation.nom}</span>
             `;
         }
     });
@@ -96,6 +101,75 @@ function chargerReservations() {
     totalP();
     reservationSelect();
     modifSuppPassSelect();
+}
+
+function dragItem(){
+    let drag;
+    sieges.forEach(siege =>{
+        siege.addEventListener("dragstart", e =>{
+
+            if(!siege.classList.contains("occupe")){
+                e.preventDefault();
+                return;
+            }
+ 
+            drag = siege;
+            e.dataTransfer.setData("text/plain", siege.dataset.seat);
+            e.dataTransfer.effectAllowed = "move";
+        });
+
+
+        siege.addEventListener("dragover", e =>{
+            e.preventDefault();
+            e.dataTransfer.dropEffect = "move";
+        });
+
+        siege.addEventListener("drop", e =>{
+            e.preventDefault();
+
+            if(!drag || siege === drag) return;
+            if(!siege.classList.contains("libre")) return;
+
+            const passager = drag.querySelector(".passager");
+
+            if(!passager) return;
+
+            const nom = passager.textContent.trim();
+            const siegeNum = drag.dataset.seat;
+            const nouvNum = siege.dataset.seat;
+
+            drag.classList.remove("occupe");
+            drag.classList.add("libre");
+            drag.innerHTML= `
+                <span class="">${siegeNum}</span>
+            `;
+
+            siege.classList.remove("libre");
+            siege.classList.add("occupe");
+            siege.innerHTML = `
+                <span class="numero-siege">${nouvNum}</span>
+                <span class="passager" draggable="true">${nom}</span>
+            `;
+
+            let reservations =  JSON.parse(localStorage.getItem("reservations")) || [];
+            reservations = reservations.map(reservation =>{
+                if(String(reservation.siege) === String(siegeNum)){
+                    return{
+                        nom : reservation.nom,
+                        siege : nouvNum
+                    }
+                }
+                return reservation;
+            });
+
+            localStorage.setItem("reservations",JSON.stringify(reservations));
+            console.log("Reservations enregistrées :", reservations);
+            placeDispo();
+            totalP();
+            reservationSelect();
+            modifSuppPassSelect();
+        });
+    });
 }
 
 
@@ -143,7 +217,7 @@ formRes.addEventListener("submit", e => {
 
     siege.innerHTML = `
         <span class="numero-siege">${numS}</span>
-        <span class="passager">${nom}</span>
+        <span class="passager" draggable="true">${nom}</span>
     `;
 
     let reservations = JSON.parse(localStorage.getItem("reservations")) || [];
@@ -301,3 +375,4 @@ formSupp.addEventListener("submit", e =>{
 chargerReservations();
 reservationSelect();
 modifSuppPassSelect();
+dragItem();

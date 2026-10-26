@@ -177,7 +177,7 @@
                     <form id="form-suppression">
                         <div class="mb-4">
                             <label for="passager-suppression" class="block text-sm font-medium mb-2">Sélectionner un passager<span class="text-rose-500">*</span></label>
-                            <select id="passager-suppression" name="passager" required class="w-full border border-slate-300 rounded-lg px-3 py-2.5 bg-white outline-none focus:border-rose-500">
+                            <select id="passager-suppression" name="passager" class="w-full border border-slate-300 rounded-lg px-3 py-2.5 bg-white outline-none focus:border-rose-500">
                             </select>
                         </div>
 
@@ -186,6 +186,23 @@
                         <p id="message-suppression" role="status" aria-live="polite" class="text-sm mt-3"></p>
                     </form>
 
+                </section>
+
+                <section class="bg-teal-50 border-teal-100 rounded-xl p-5">
+                    <h2 class="text-lg font-bold text-teal-600 mb-4">
+                        <span class="inline-flex items-center justify-center bg-teal-500 text-white rounded-lg w-9 h-9 mr-2"><i class="fa-solid fa-magnifying-glass" style="color: rgb(255, 255, 255);"></i></span>Rechercher une réservation
+                    </h2>
+                    <form id="form-recherche">
+                        <div class="mb-4">
+                            <label for="rechercher-nom" class="block text-sm font-medium mb-2">Rechercher un passager</label>
+                            <input type="text" id="rechercher-nom" name="rechNom" placeholder="Ex : Hafssa" class="w-full border border-slate-300 rounded-lg px-3 py-2.5 outline-none focus:bg-teal-400">
+                        </div>
+
+                        <button type="submit" class="w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold rounded-lg py-3">Rechercher</button>
+
+                        <p id="message-rechercher" role="status" aria-live="polite" class="text-sm mt-3"></p>
+                    </form>
+                    
                 </section>
 
             </div>
