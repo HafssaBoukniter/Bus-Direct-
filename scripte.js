@@ -52,9 +52,10 @@ function modifSuppPassSelect() {
 
             if (passager) {
                 const nom = passager.textContent.trim();
+                const numS = siege.dataset.seat;
 
                 const option1 = document.createElement("option");
-                option1.value = siege.dataset.seat;
+                option1.value = numS;
                 option1.textContent = nom;
 
                 passagerSelectModif.appendChild(option1);
@@ -168,6 +169,22 @@ function dragItem(){
             totalP();
             reservationSelect();
             modifSuppPassSelect();
+        });
+    });
+}
+
+function selectionnerSiege(){
+    sieges.forEach(siege =>{
+        siege.addEventListener("click" , () =>{
+            if(siege.classList.contains("libre")){
+                selectReservation.value = siege.dataset.seat;
+            }else if(siege.classList.contains("occupe")){
+                const passager = siege.querySelector(".passager");
+
+                if(passager){
+                    passagerSelectModif.value = siege.dataset.seat;
+                }
+            }
         });
     });
 }
@@ -376,3 +393,4 @@ chargerReservations();
 reservationSelect();
 modifSuppPassSelect();
 dragItem();
+selectionnerSiege();
