@@ -11,19 +11,35 @@
 <body class="bg-slate-50 text-slate-800">
     <!--header-->
     <header class="bg-teal-700 text-white">
-        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-3">
-                <span class="text-4xl"><i class="fa-solid fa-bus" style="color: rgb(255, 255, 255);"></i></span>
-                <div>
-                    <h1 class="text-2xl font-bold">BusDirect</h1>
-                </div>
-            </a>
-            <div class="flex items-center gap-6">
-                <a href="index.html" class="font-semibold border-b-2 border-white pb-1"><i class="fa-regular fa-house" style="color: rgb(255, 255, 255);"></i> Accueil</a>
+        
+<nav class="max-w-7xl mx-auto px-6 py-4 flex flex-wrap items-center justify-between">
 
-                <a href="tickets.html"class="font-semibold hover:text-teal-200"><i class="fa-solid fa-ticket" style="color: rgb(255, 255, 255);"></i> Tickets</a>
-            </div>
-        </nav>
+    <a href="index.html" class="flex items-center gap-3">
+        <span class="text-4xl">
+            <i class="fa-solid fa-bus" style="color: white;"></i>
+        </span>
+        <div>
+            <h1 class="text-2xl font-bold">BusDirect</h1>
+        </div>
+    </a>
+
+    <button type="button" id="menu" aria-expanded="false" class="hidden max-sm:block text-white text-2xl p-2">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <div
+        id="mobile-links" class="hidden w-full flex-col bg-teal-700 text-white md:flex md:w-auto md:flex-row md:items-center md:gap-6 md:bg-transparent">
+        <a href="index.html" class="block w-full border-b border-slate-200 px-5 py-4 font-semibold md:w-auto md:border-0 md:px-0 md:py-0">
+            <i class="fa-regular fa-house"></i> Accueil
+        </a>
+
+        <a href="tickets.html" class="block w-full px-5 py-4 font-semibold md:w-auto md:border-0 md:px-0 md:py-0">
+            <i class="fa-solid fa-ticket"></i> Tickets
+        </a>
+    </div>
+
+</nav>
+
     </header>
 
     <!--main-->

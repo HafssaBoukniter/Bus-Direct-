@@ -22,6 +22,16 @@ const formRech = document.getElementById("form-recherche");
 const passagerRechercher = document.querySelector("rechercher-nom");
 const parRech = document.querySelector("#message-rechercher");
 
+const menu = document.getElementById("menu");
+const mobileLinks = document.getElementById("mobile-links");
+
+menu.addEventListener("click", ()=>{
+    mobileLinks.classList.toggle("hidden");
+    
+    const menuOuv = !mobileLinks.classList.contains("hidden");
+
+    menu.setAttribute("aria-expanded" , menuOuv);
+})
 
 //select form reservation
 function reservationSelect() {
@@ -372,9 +382,13 @@ formSupp.addEventListener("submit", e =>{
 
     let reservations = JSON.parse(localStorage.getItem("reservations")) || [];
 
-    reservations = reservations.filter(
-        reservation => reservation.siege !== passExist
+    const index = reservations.findIndex(
+        reservation => reservation.siege === passExist
     );
+
+    if(index !== -1){
+        reservations.splice(index,1);
+    }
 
     localStorage.setItem("reservations", JSON.stringify(reservations));
 
