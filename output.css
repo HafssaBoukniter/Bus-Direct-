@@ -792,6 +792,9 @@
   .focus\:border-rose-500:focus {
     border-color: var(--color-rose-500);
   }
+  .focus\:border-teal-400:focus {
+    border-color: var(--color-teal-400);
+  }
   .focus\:border-teal-500:focus {
     border-color: var(--color-teal-500);
   }

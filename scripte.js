@@ -19,7 +19,7 @@ const passagerSupp = document.querySelector("#passager-suppression");
 const parSupp = document.querySelector("#message-suppression");
 
 const formRech = document.getElementById("form-recherche");
-const passagerRechercher = document.querySelector("rechercher-nom");
+const passagerRechercher = document.querySelector("#rechercher-nom");
 const parRech = document.querySelector("#message-rechercher");
 
 const menu = document.getElementById("menu");
@@ -90,11 +90,18 @@ function totalP() {
 
 
 function chargerReservations() {
-    const reservations = JSON.parse(localStorage.getItem("reservations")) || [];
+    let reservations = [];
+
+    try{
+        reservations = JSON.parse(localStorage.getItem("reservations")) || [];
+    }catch (error){
+        reservations = [];
+    }
+    
 
     reservations.forEach(reservation => {
         const siege = Array.from(sieges).find(
-            s => s.dataset.seat === String(reservation.siege)
+            s => s.dataset.seat === reservation.siege
         );
 
         if (siege) {
@@ -247,7 +254,13 @@ formRes.addEventListener("submit", e => {
         <span class="passager" draggable="true">${nom}</span>
     `;
 
-    let reservations = JSON.parse(localStorage.getItem("reservations")) || [];
+    let reservations = [];
+
+    try{
+        reservations = JSON.parse(localStorage.getItem("reservations")) || [];
+    }catch (error){
+        reservations = [];
+    }
 
     const reservation = {
         nom: nom,
@@ -401,6 +414,46 @@ formSupp.addEventListener("submit", e =>{
     setTimeout(() => {
         parSupp.textContent = "";
     }, 3000);
+});
+
+formRech.addEventListener("submit" ,e =>{
+    e.preventDefault();
+
+    const passagerR = passagerRechercher.value.trim();
+
+    if(passagerR ===""){
+        parRech.textContent = "Veuillez saisir le nom du passager !";
+        setTimeout(() =>{
+            parRech.textContent = "";
+        },3000);
+
+        return;
+    }
+
+    let reservations = JSON.parse(localStorage.getItem("reservations")) || [];
+
+    const resTrouve = reservations.find(
+        reservation => reservation.nom.toLowerCase() == passagerR.toLowerCase()
+    );
+
+    if(!resTrouve){
+        parRech.textContent = "Aucun passager trouver !";
+        setTimeout(() =>{
+            parRech.textContent ="";
+        });
+
+        return;
+    }
+
+    const siegeMatch = resTrouve.siege;
+
+    console.log(siegeMatch);
+
+    console.log("Toutes les réservations :", reservations);
+    console.log("Première réservation :", reservations[0]);
+
+    parRech.textContent = `Le passager ${passagerR} est assis au siège ${siegeMatch}`;
+
 });
 
 chargerReservations();
