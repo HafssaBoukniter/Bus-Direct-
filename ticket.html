@@ -5,9 +5,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ticket | Gestion des Réservations de Sièges</title>
     <link rel="stylesheet" href="style.css">
-    <script src="scripte.js"></script>
+    <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css" integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
 </head>
-<body>
-    
+<body class="bg-slate-50 text-slate-800">
+     <!--header-->
+    <header class="bg-teal-700 text-white">
+        
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex flex-wrap items-center justify-between">
+
+            <a href="index.html" class="flex items-center gap-3">
+                <span class="text-4xl">
+                    <i class="fa-solid fa-bus" style="color: white;"></i>
+                </span>
+                <div>
+                    <h1 class="text-2xl font-bold">BusDirect</h1>
+                </div>
+            </a>
+
+            <button type="button" id="menu" aria-expanded="false" class="hidden max-sm:block text-white text-2xl p-2">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div
+                id="mobile-links" class="hidden w-full flex-col bg-teal-700 text-white md:flex md:w-auto md:flex-row md:items-center md:gap-6 md:bg-transparent">
+                <a href="/index.html" class="block w-full px-5 py-4 font-semibold md:w-auto md:border-0 md:px-0 md:py-0">
+                    <i class="fa-regular fa-house"></i> Accueil
+                </a>
+
+                <a href="tickets.html" class="block w-full border-b border-slate-200 px-5 py-4 font-semibold md:w-auto md:border-0 md:px-0 md:py-0">
+                    <i class="fa-solid fa-ticket"></i> Tickets
+                </a>
+            </div>
+
+        </nav>
+
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-7">
+        <section id="trip-information" class="bg-teal-50 border border-teal-100 rounded-xl p-6 mb-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-center">
+            <div class="">
+                <h2 class="text-3xl font-bold text-teal-900">
+                    Safi <span class="text-teal-600">→</span> Marrakech
+                </h2>
+
+                <div class="flex flex-row gap-5">
+                    <p class="text-sm text-slate-600 mt-3">
+                        <i class="fa-regular fa-calendar-days" style="color: rgb(0, 150, 137);"></i> Date : 27/10/2026
+                    </p>
+                    <p class="text-sm text-slate-600 mt-3">
+                        <i class="fa-regular fa-clock" style="color: rgb(0, 150, 137);"></i> Heure de départ : 08:00
+                    </p>
+
+                </div>
+            </div>
+            
+            
+        </section>
+
+        <section class="bg-white border border-slate-200 rounded-xl overflow-hidden">
+            <div class="flex items-center gap-8 p-5 border-b border-slate-200 justify-between">
+                <div class="flex items-center gap-2">
+                    <span class="font-bold">
+                        Tickets d'embarquement
+                    </span>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <span id="number-billets" class="font-medium"></span>
+                    <span class="font-medium">billets émis</span>
+                </div>
+            </div>
+
+            <div id="tickets" class="grid grid-cols-2 m-5 gap-4">
+                  
+            </div>
+        </section>
+    </main>
+
+    <!--footer-->
+    <footer class="border-t border-slate-200 bg-white mt-8">
+        <div class="max-w-7xl mx-auto px-6 py-5 text-center text-sm text-slate-500">
+            &copy; 2026 BusDirect — Tous droits réservés.
+        </div>
+    </footer>
+
+
+    <script src="tickets.js"></script>
 </body>
 </html>
